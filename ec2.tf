@@ -1,14 +1,25 @@
-resource "aws_instance" "example" {
-  ami           = data.aws_ami.amzn-linux-2023-ami.id
-  instance_type = "t2.nano"
-  subnet_id     = aws_subnet.example.id
-
-  cpu_options {
-    core_count       = 2
-    threads_per_core = 2
-  }
+resource "aws_instance" "web2" {
+  ami           = "ami-0453ec754f44f9a4a"
+  instance_type = "t2.micro"
 
   tags = {
-    Name = "tf-example"
+    Name = "HelloWorld"
   }
+}
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-east-1"
+  assume_role {
+    role_arn = "arn:aws:iam::058264383077:role/adminn"
+  }
+  
 }
