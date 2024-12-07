@@ -23,7 +23,7 @@ provider "aws" {
   }
   default_tags {
         tags = {
-           Terraform = "Terraform"
+           Terraform = "True"
         }
   
   }
