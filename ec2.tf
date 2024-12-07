@@ -21,5 +21,10 @@ provider "aws" {
   assume_role {
     role_arn = "arn:aws:iam::058264383077:role/adminn"
   }
+  default_tags {
+        tags = {
+           Terraform = "Terraform"
+        }
   
+  }
 }
